@@ -5,6 +5,7 @@ import { ServiceDetail } from "./pages/ServiceDetail"
 import { ScrollToTop } from "./ScrollToTop"
 import { Contactus } from "./pages/Contactus"
 import { Toaster } from 'sonner';
+import AboutPage from "./pages/Aboutpage"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/:id" element={<ServiceDetail />} />
           <Route path="/contact" element={<Contactus />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </BrowserRouter>
     </>

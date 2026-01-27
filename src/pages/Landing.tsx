@@ -116,7 +116,9 @@ export const Landing: React.FC = () => {
             </button>
 
             <button className="w-full sm:w-auto border cursor-pointer border-zinc-800 text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold hover:bg-white/5 transition-all text-sm md:text-base whitespace-nowrap">
+            <a href="#services" className="hover:text-white transition-colors uppercase">
               Our Capabilities
+            </a>
             </button>
           </motion.div>
         </motion.div>
