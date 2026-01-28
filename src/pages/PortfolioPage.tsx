@@ -233,7 +233,7 @@ export const PortfolioPage = () => {
 
                                     <button
                                         onClick={() => window.location.href = '/contact'}
-                                        className="w-full bg-white text-black py-4 rounded-xl font-bold hover:bg-zinc-200 transition-colors uppercase tracking-widest text-sm"
+                                        className="w-full bg-white text-black py-4 rounded-xl font-bold hover:bg-zinc-200 transition-colors uppercase tracking-normal sm:tracking-widest text-[12px] sm:text-sm leading-tight"
                                     >
                                         Get Similar Results for Your Brand
                                     </button>

@@ -186,7 +186,7 @@ export const Contactus = () => {
                                     <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-full group-hover:border-zinc-500 transition-colors">
                                         <Mail size={20} className="text-zinc-400" />
                                     </div>
-                                    <span className="text-lg hover:text-zinc-400 transition-colors">manager.remapstudio@gmail.com</span>
+                                    <span className="text-lg hover:text-zinc-400 transition-colors">Gmail</span>
                                 </a>
                                 <a href="tel:+916397607997" className="flex items-center gap-4 group">
                                     <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-full group-hover:border-zinc-500 transition-colors">
