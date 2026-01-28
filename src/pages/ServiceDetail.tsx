@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Play } from 'lucide-react';
 import CorporateImg from '../assets/CorporateImg.avif';
@@ -9,6 +9,7 @@ import InterviewsImg from '../assets/InterviewsImg.avif';
 import imgurl from '../assets/imgurl.avif';
 
 export const ServiceDetail = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const services = [
     {
@@ -214,7 +215,7 @@ export const ServiceDetail = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <section className="relative h-[70vh] flex items-end px-6 pb-20">
+      <section className="relative h-[65vh] flex items-end px-6 pb-20">
         <div className="absolute inset-0 z-0">
           <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
@@ -294,14 +295,11 @@ export const ServiceDetail = () => {
                 Skip the guesswork. Schedule a technical consultation to review your upcoming project requirements and receive a structured production proposal tailored to your brand.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-black text-white px-10 py-5 rounded-full font-bold hover:bg-zinc-800 transition-all text-center">
-                Schedule Consultation
+              <button 
+              onClick={()=> navigate("/contact")}
+              className="bg-black cursor-pointer text-white px-10 py-5 rounded-full font-bold hover:bg-zinc-800 transition-all text-center">
+                Let's Connect
               </button>
-              <button className="bg-transparent text-black border border-zinc-200 px-10 py-5 rounded-full font-semibold hover:bg-zinc-50 transition-all text-center">
-                View Work
-              </button>
-            </div>
           </div>
         </div>
       </section>

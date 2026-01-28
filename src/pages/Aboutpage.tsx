@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { Camera, Video, Palette, Zap, CheckCircle2, Target, Trophy, Clock, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const AboutPage = () => {
-    const navigate = useNavigate()
+export const AboutPage = () => {
+  const navigate = useNavigate()
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -13,43 +13,41 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-zinc-800">
-      {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-24 px-6 overflow-hidden">
-            <div className="relative z-10 max-w-5xl mx-auto">
-                <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="group flex mb-12 cursor-pointer items-center w-fit" 
-                    onClick={() => navigate('/')}
-                >
-                    <ArrowLeft className="mr-2 text-zinc-500 group-hover:text-white group-hover:-translate-x-2 transition-all duration-300"
-                        size={20}/>
-                    <span className="text-sm uppercase tracking-widest font-medium text-zinc-500 group-hover:text-white transition-colors duration-300">
-                        back to home
-                    </span>
-                </motion.div>
+      <section className="relative pt-20 pb-24 px-6 overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="group flex mb-12 cursor-pointer items-center w-fit"
+            onClick={() => navigate('/')}
+          >
+            <ArrowLeft className="mr-2 text-zinc-500 group-hover:text-white group-hover:-translate-x-2 transition-all duration-300"
+              size={20} />
+            <span className="text-sm uppercase tracking-widest font-medium text-zinc-500 group-hover:text-white transition-colors duration-300">
+              back to home
+            </span>
+          </motion.div>
 
-                <div className="text-center">
-                    <motion.h1 
-                        {...fadeIn}
-                        className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-transparent"
-                    >
-                        High-quality visual production built to help your brand grow.
-                    </motion.h1>
-                    
-                    <motion.p 
-                        {...fadeIn}
-                        transition={{ delay: 0.2 }}
-                        className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl mx-auto"
-                    >
-                        Remap Studio is a professional creative production house. We help businesses stand out with premium photo and video content that builds authority and drives real results.
-                    </motion.p>
-                </div>
-            </div>
-        </section>
+          <div className="text-center">
+            <motion.h1
+              {...fadeIn}
+              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-transparent"
+            >
+              High-quality visual production built to help your brand grow.
+            </motion.h1>
 
-      {/* 3. What We Do */}
+            <motion.p
+              {...fadeIn}
+              transition={{ delay: 0.2 }}
+              className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl mx-auto"
+            >
+              Remap Studio is a professional creative production house. We help businesses stand out with premium photo and video content that builds authority and drives real results.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+      {/* What We Do Section */}
       <section className="py-24 px-6 border-y border-zinc-900 bg-zinc-950/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-sm uppercase tracking-[0.3em] text-zinc-500 font-bold mb-12 text-center">What We Do</h2>
@@ -60,7 +58,7 @@ const AboutPage = () => {
               { icon: Palette, title: "Branding", desc: "Modern visual systems and high-impact digital designs." },
               { icon: Zap, title: "AI Content", desc: "AI-powered UGC and ads for high-volume social growth." }
             ].map((service, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -77,14 +75,14 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* 4. How We Work */}
+      {/* How We Work section */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold tracking-tight mb-6">Our Process</h2>
               <p className="text-zinc-400 text-lg mb-8">We follow a simple, 4-step workflow to ensure your project is delivered with precision.</p>
-              
+
               <div className="space-y-8">
                 {[
                   { step: "01", title: "Understand", desc: "We learn about your project goals and business requirements." },
@@ -103,17 +101,17 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="bg-zinc-900 aspect-square rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-               <img 
-                 src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800" 
-                 alt="Studio Workspace" 
-                 className="w-full h-full object-cover"
-               />
+              <img
+                src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800"
+                alt="Studio Workspace"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Why Choose Us */}
+      {/* Why Choose Us section */}
       <section className="py-24 px-6 bg-zinc-950/40">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-16 tracking-tight">Why Businesses Trust Us</h2>
@@ -140,20 +138,18 @@ const AboutPage = () => {
 
       {/* Call to Action */}
       <section className="py-24 px-6 text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="max-w-4xl mx-auto p-12 bg-white text-black rounded-3xl"
-          >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to scale your brand?</h2>
-              <button className="bg-black cursor-pointer text-white px-8 py-4 rounded-full font-semibold hover:bg-zinc-800 transition-colors"
-              onClick={()=> navigate('/contact')}>
-                Let's Talk About Your Project
-              </button>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="max-w-4xl mx-auto p-12 bg-white text-black rounded-3xl"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to scale your brand?</h2>
+          <button className="bg-black cursor-pointer text-white px-8 py-4 rounded-full font-semibold hover:bg-zinc-800 transition-colors"
+            onClick={() => navigate('/contact')}>
+            Let's Talk About Your Project
+          </button>
+        </motion.div>
       </section>
     </div>
   );
 };
-
-export default AboutPage;

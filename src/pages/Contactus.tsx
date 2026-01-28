@@ -67,7 +67,7 @@ export const Contactus = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-zinc-800">
-            <section className="relative pt-32 pb-16 px-6">
+            <section className="relative pt-15 pb-16 px-6">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ export const Contactus = () => {
                 >
                     <ArrowLeft
                         className="mr-2 text-zinc-500 group-hover:text-white group-hover:-translate-x-2 transition-all duration-300"
-                        size={20}
+                        size={25}
                     />
                     <span className="text-sm uppercase tracking-widest font-medium text-zinc-500 group-hover:text-white transition-colors duration-300">
                         back to home
@@ -147,7 +147,7 @@ export const Contactus = () => {
                                         className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-zinc-500 appearance-none transition-all"
                                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                                     >
-                                        <option value="">How can we help?</option>
+                                        <option value="">Select Your Service</option>
                                         <option value="photography">Photography & Videography</option>
                                         <option value="ai-ads">AI-Powered Ads</option>
                                         <option value="branding">Commercial Branding</option>
