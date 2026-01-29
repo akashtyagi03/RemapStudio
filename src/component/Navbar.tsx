@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate()
 
   const navLinks = [
     { name: "Home", to: "/" },
     { name: "Services", hash: "#services" },
-    { name: "Portfolio", to: "/portfolio" },
-    { name: "About", to: "/about" },
+    { name: "About", hash: "#about" },
   ];
 
   return (
@@ -36,7 +34,7 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Button */}
         <button
-          onClick={() => navigate('/contact')}
+          onClick={() => window.location.hash = '#contact'}
           className="hidden md:block bg-white cursor-pointer text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-zinc-200 transition-all uppercase tracking-wider"
         >
           Contact Us
@@ -74,7 +72,7 @@ export const Navbar: React.FC = () => {
               <button
                 onClick={() => {
                   setIsMenuOpen(false);
-                  navigate('/contact');
+                  window.location.hash = '#contact';
                 }}
                 className="w-full bg-white text-black py-5 rounded-2xl font-bold text-lg"
               >

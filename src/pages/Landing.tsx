@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import {Camera, Video, Scissors, Plane, Cpu, PenTool, ArrowRight, LucideIcon} from 'lucide-react';
+import { Camera, Video, Scissors, Plane, Cpu, PenTool, ArrowRight, LucideIcon } from 'lucide-react';
 import { Navbar } from '../component/Navbar';
 import { ServiceCard } from '../component/ServiceCard';
-import { useNavigate } from 'react-router-dom';
+import { Contactus } from './Contactus';
+import { AboutPage } from './Aboutpage';
+import { ConstellationBackground } from '../component/ConstellationBackground';
 
 interface ServiceItem {
   id: string;
@@ -20,12 +22,16 @@ const fadeInUp: Variants = {
 };
 
 const staggerContainer: Variants = {
-  visible: { transition: { staggerChildren: 0.1 } }
+  hidden: { opacity: 0 }, // Add this key
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+  }
 };
 
 // Main Page Component 
 export const Landing: React.FC = () => {
-  const navigate = useNavigate()
+
   const services: ServiceItem[] = [
     {
       id: "photography-videography",
@@ -74,31 +80,32 @@ export const Landing: React.FC = () => {
   return (
     <div className="bg-black text-white selection:bg-white selection:text-black font-sans antialiased">
       <Navbar />
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden bg-black pt-24">
-
-        <div className="absolute inset-0 bg-linear-to-b from-black via-zinc-950 to-black" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-225 h-125 bg-zinc-700/10 blur-[160px] rounded-full pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,black_80%)]" />
-
+      <section className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden bg-black pt-25 md:pt-24">
+        <div className="absolute inset-0 z-0">
+          <ConstellationBackground />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,black_90%)] z-1 pointer-events-none" />
         <motion.div
           initial="hidden"
           animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={staggerContainer}
-          className="relative z-10 max-w-5xl"
+          className="relative z-10 max-w-5xl px-4 md:px-0 mt-20 md:mt-24"
         >
           <motion.h1
             variants={fadeInUp}
-            className="text-4xl md:text-8xl font-bold tracking-tighter text-white mb-6 md:mb-8 leading-[1.1] md:leading-[0.9]"
+            className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-6 md:mb-8 leading-[1.1]"
           >
             High-Impact Visuals <br className="hidden md:block" />
-            <span className="text-zinc-500 italic font-medium">
+            <span className="text-zinc-500 italic font-medium block md:inline mt-2 md:mt-0">
               For The Modern Brand
             </span>
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
-            className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light leading-relaxed px-2 md:px-0"
+            className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light leading-relaxed px-4 md:px-0"
           >
             We deliver cinematic production and AI-powered creative solutions designed to scale your brand’s digital footprint.
           </motion.p>
@@ -108,31 +115,25 @@ export const Landing: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center items-center"
           >
             <button
-              onClick={() => navigate('/contact')}
-              className="w-full sm:w-auto bg-white cursor-pointer text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform whitespace-nowrap text-sm md:text-base"
+              onClick={() => window.location.hash = '#contact'}
+              className="w-full sm:w-auto bg-white cursor-pointer text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform"
             >
               Book a Consultation
               <ArrowRight size={18} className="md:w-5 md:h-5" />
             </button>
 
-            <button className="w-full sm:w-auto border cursor-pointer border-zinc-800 text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold hover:bg-white/5 transition-all text-sm md:text-base whitespace-nowrap">
-            <a href="#services" className="hover:text-white transition-colors uppercase">
-              Our Capabilities
-            </a>
+            <button className="w-full sm:w-auto border border-zinc-800 text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold hover:bg-white/5 transition-all">
+              <a href="#services" className="uppercase tracking-widest text-xs">
+                Our Capabilities
+              </a>
             </button>
           </motion.div>
         </motion.div>
       </section>
 
-      <div className="border-y border-zinc-900 py-10 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-around gap-10 opacity-30">
-          {['Corporate-Ready', 'Cinematic Quality', 'Fast Turnaround', 'AI-Driven'].map((item) => (
-            <span key={item} className="text-[10px] uppercase tracking-[0.3em] font-bold">{item}</span>
-          ))}
-        </div>
-      </div>
+      <div className="border-y border-zinc-900 mt-8 bg-black"></div>
 
-      <section id="services" className="py-32 px-6 max-w-7xl mx-auto">
+      <section id="services" className="py-20 px-6 max-w-7xl mx-auto">
         <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Core Services</h2>
@@ -154,50 +155,14 @@ export const Landing: React.FC = () => {
         </motion.div>
       </section>
 
-      <section className="py-32 bg-zinc-950 border-y border-zinc-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-center text-4xl font-bold mb-20 tracking-tighter italic">The Remap Workflow</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {['Discover', 'Plan', 'Produce', 'Deliver'].map((step, i) => (
-              <div key={step} className="group">
-                <div className="text-xs font-mono text-zinc-700 mb-4 tracking-widest">STEP_0{i + 1}</div>
-                <h4 className="text-xl font-bold mb-3 text-white group-hover:text-zinc-400 transition-colors">{step}</h4>
-                <div className="w-full h-px bg-zinc-800 mb-4" />
-                <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                  {i === 0 && "We align on your KPIs and brand narrative."}
-                  {i === 1 && "Technical storyboarding and logistics mapping."}
-                  {i === 2 && "Execution using 8K standards and pro gear."}
-                  {i === 3 && "Optimized assets delivered for your platforms."}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section id="about" className='bg-zinc-950 border-y border-zinc-900'>
+        <AboutPage />
+      </section>
+      <section id="contact" className='bg-zinc-950 border-y border-zinc-900'>
+        <Contactus />
       </section>
 
-      <section className="py-20 md:py-40 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="max-w-5xl mx-auto p-10 md:p-20 bg-linear-to-br from-zinc-800 to-zinc-950 rounded-4xl md:rounded-[4rem] border border-white/5 relative overflow-hidden"
-        >
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-7xl font-bold mb-8 md:mb-10 tracking-tighter leading-tight md:leading-none">
-              Ready to elevate your <br className="hidden md:block" /> brand's visual identity?
-            </h2>
-            <button
-              onClick={() => navigate('/contact')}
-              className="bg-white text-black cursor-pointer px-8 py-4 md:px-12 md:py-6 rounded-full font-black text-sm md:text-lg hover:bg-zinc-200 transition-all hover:scale-105 whitespace-nowrap"
-            >
-              Start Your Project
-            </button>
-          </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-125 md:h-125 bg-white/5 blur-[80px] md:blur-[120px] rounded-full" />
-        </motion.div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-20 px-6 border-t border-zinc-900">
+      <footer className="py-16 px-6 border-t border-zinc-900">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
           <div>
             <div className="font-black text-2xl tracking-tighter mb-4">REMAP STUDIO</div>
@@ -206,9 +171,10 @@ export const Landing: React.FC = () => {
             </p>
           </div>
           <div className="gap-30">
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col">
               <h5 className="text-[10px] uppercase tracking-widest text-zinc-400">Contact</h5>
               <a href="mailto:manager.remapstudio@gmail.com" className="text-sm text-zinc-500 hover:text-white transition-colors cursor-pointer">manager.remapstudio@gmail.com</a>
+              <a href="mailto:hello@remapstudio.com" className="text-sm text-zinc-500 hover:text-white transition-colors cursor-pointer">hello@remapstudio.com</a>
               <div className="text-sm text-zinc-500">Hyderabad / Delhi / Remote</div>
             </div>
             <div className="space-y-4">
@@ -220,7 +186,7 @@ export const Landing: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-zinc-900 text-[10px] text-zinc-800 uppercase tracking-widest">
+        <div className="max-w-7xl mx-auto mt-15 pt-5 border-t border-zinc-900 text-[10px] text-zinc-600 uppercase tracking-widest">
           © 2026 Remap Studio. All Rights Reserved.
         </div>
       </footer>

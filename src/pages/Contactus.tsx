@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import emailjs from "@emailjs/browser";
-import { ArrowLeft, ArrowRight, ChevronDown, Phone } from 'lucide-react';
+import { ArrowRight, ChevronDown, Mail, Phone } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface ContactFormData {
     fullName: string;
@@ -13,7 +13,7 @@ interface ContactFormData {
 }
 
 export const Contactus = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [formData, setFormData] = useState<ContactFormData>({
         fullName: '',
         email: '',
@@ -52,35 +52,19 @@ export const Contactus = () => {
     const labelClasses = "block text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-1";
 
     return (
-        <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
+        <div className="bg-black text-white font-sans selection:bg-white selection:text-black">
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-6 pt-15 pb-32">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="group flex max-w-7xl mx-auto w-full mb-12 cursor-pointer items-center"
-                    onClick={() => navigate('/')}
-                >
-                    <ArrowLeft
-                        className="mr-2 text-zinc-500 group-hover:text-white group-hover:-translate-x-2 transition-all duration-300"
-                        size={25}
-                    />
-                    <span className="text-sm uppercase tracking-widest font-medium text-zinc-500 group-hover:text-white transition-colors duration-300">
-                        back to home
-                    </span>
-                </motion.div>
-
+            <main className="max-w-7xl mx-auto px-6 w-full py-15 md:py-32">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                     {/* Left Column: Branding & Info */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="space-y-8"
+                        className="space-y-6 md:space-y-8"
                     >
                         <div className="space-y-4">
                             <h3 className="text-white text-sm font-bold tracking-[0.2em] uppercase">Start a Project</h3>
-                            <h1 className="text-6xl text-zinc-500 md:text-8xl font-bold tracking-tight leading-[0.9]">
+                            <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight leading-none md:leading-[0.9]">
                                 Let's create <br />
                                 <span className="text-white">together</span>
                             </h1>
@@ -90,17 +74,39 @@ export const Contactus = () => {
                             Ready to bring your vision to life? Tell us about your project and we'll get back to you within 24 hours.
                         </p>
 
-                        <div className="pt-8">
-                            <p className="text-zinc-500 text-sm mb-2">Email</p>
-                            <a href="mailto:manager.remapstudio@gmail.com" className="text-xl text-zinc-500 hover:text-white transition-colors font-medium">
-                                manager.remapstudio@gmail.com
-                            </a>
-                            <a href="tel:+916397607997" className="flex items-center gap-4 group pt-5">
-                                <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-full group-hover:border-zinc-500 transition-colors">
-                                    <Phone size={15} className="text-zinc-400" />
+                        <div className="pt-2 w-fit space-y-8">
+                            <div className="space-y-3">
+                                <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Email</p>
+                                <div className="flex flex-col gap-6 md:gap-4">
+                                    <a href="mailto:manager.remapstudio@gmail.com"
+                                        className="group flex items-center gap-4 text-xl text-zinc-400 hover:text-white transition-all">
+                                        <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
+                                            <Mail size={18} className="text-zinc-500 group-hover:text-white" />
+                                        </div>
+                                        <span className="font-medium break-all md:break-normal">
+                                            manager.remapstudio@gmail.com
+                                        </span>
+                                    </a>
+
+                                    <a href="mailto:hello@remapstudio.com"
+                                        className="group flex items-center gap-4 text-xl text-zinc-400 hover:text-white transition-all">
+                                        <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
+                                            <Mail size={18} className="text-zinc-500 group-hover:text-white" />
+                                        </div>
+                                        <span className="font-normal">hello@remapstudio.com</span>
+                                    </a>
                                 </div>
-                                <span className="text-lg hover:text-zinc-400 transition-colors">+91 63976 07997</span>
-                            </a>
+                            </div>
+                            <div className="space-y-3">
+                                <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Phone</p>
+                                <a href="tel:+916397607997"
+                                    className="group flex items-center gap-4 text-xl text-zinc-300 hover:text-white transition-all">
+                                    <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
+                                        <Phone size={18} className="text-zinc-500 group-hover:text-white" />
+                                    </div>
+                                    <span className="font-medium">+91 63976 07997</span>
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -167,7 +173,7 @@ export const Contactus = () => {
 
                             <button
                                 type="submit"
-                                className="group flex items-center gap-3 bg-white cursor-pointer text-black px-8 py-4 font-bold transition-all mt-4"
+                                className="group flex items-center justify-center gap-3 bg-white cursor-pointer rounded-2xl text-black w-full sm:w-auto px-8 py-5 font-bold transition-all mt-8"
                             >
                                 Send Message
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -176,21 +182,6 @@ export const Contactus = () => {
                     </motion.div>
                 </div>
             </main>
-
-            {/* Footer */}
-            <footer className="border-t border-zinc-900 py-10 px-6">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                    {/* change logo here? */}
-                    <div className="text-xl font-bold tracking-tighter">R$</div>
-                    <div className="text-zinc-500 hover:text-white transition-colors cursor-pointer">
-                        <a href="mailto:manager.remapstudio@gmail.com">manager.remapstudio@gmail.com</a>
-                    </div>
-                    <div className="flex gap-8 text-sm font-medium text-zinc-500">
-                        <a href="https://www.instagram.com/remapstudio?igsh=OGxmbG1jbDBmamM5" className="hover:text-white transition-colors">Instagram</a>
-                        <a href="https://www.linkedin.com/company/remapstudio/" className="hover:text-white transition-colors">LinkedIn</a>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };
