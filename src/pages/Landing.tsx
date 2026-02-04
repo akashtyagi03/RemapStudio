@@ -6,7 +6,6 @@ import { ServiceCard } from '../component/ServiceCard';
 import { Contactus } from './Contactus';
 import { AboutPage } from './Aboutpage';
 import { ConstellationBackground } from '../component/ConstellationBackground';
-import { Link } from 'react-router-dom';
 
 interface ServiceItem {
   id: string;
