@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import emailjs from "@emailjs/browser";
-import { ArrowRight, ChevronDown, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Mail, Phone, Instagram, ArrowUpRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
-// import { useNavigate } from 'react-router-dom';
 
 interface ContactFormData {
     fullName: string;
@@ -13,7 +12,6 @@ interface ContactFormData {
 }
 
 export const Contactus = () => {
-    // const navigate = useNavigate();
     const [formData, setFormData] = useState<ContactFormData>({
         fullName: '',
         email: '',
@@ -23,13 +21,13 @@ export const Contactus = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
         const templateParams = {
             full_name: formData.fullName,
             email: formData.email,
             service: formData.service,
             message: formData.message,
         };
+        
         toast.promise(
             emailjs.send(
                 'service_ob5ufhl',
@@ -38,134 +36,127 @@ export const Contactus = () => {
                 'wVFz4kxzDVcgah9kr'
             ),
             {
-                loading: 'Sending...',
+                loading: 'Sending your vision...',
                 success: () => {
                     setFormData({ fullName: '', email: '', service: '', message: '' });
-                    return 'Message sent successfully!';
+                    return 'Message sent! We’ll talk soon.';
                 },
                 error: 'Failed to send. Please try again.',
             }
         );
     };
 
-    const inputClasses = "w-full bg-transparent border-b border-zinc-800 py-3 outline-none focus:border-white transition-colors placeholder:text-zinc-700 text-white";
-    const labelClasses = "block text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-1";
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { y: 0, opacity: 1 }
+    };
 
     return (
-        <div className="bg-black text-white font-sans selection:bg-white selection:text-black">
-            {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-6 w-full py-15 md:py-32">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                    {/* Left Column: Branding & Info */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="space-y-6 md:space-y-8"
+        <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black overflow-x-hidden">
+            {/* Ambient Background Glow */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-900/30 blur-[120px] rounded-full" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-white/5 blur-[100px] rounded-full" />
+            </div>
+
+            <main className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-40">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+                    
+                    {/* Left Column - 5 Cols */}
+                    <motion.div 
+                        className="lg:col-span-5 space-y-12"
+                        initial="hidden"
+                        animate="visible"
+                        variants={containerVariants}
                     >
-                        <div className="space-y-4">
-                            <h3 className="text-white text-sm font-bold tracking-[0.2em] uppercase">Start a Project</h3>
-                            <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight leading-none md:leading-[0.9]">
-                                Let's create <br />
-                                <span className="text-white">together</span>
+                        <motion.div variants={itemVariants} className="space-y-4">
+                            <h1 className="text-6xl md:text-8xl font-medium tracking-tighter leading-[0.85]">
+                                Let's build <br />
+                                <span className="italic font-light">the future.</span>
                             </h1>
-                        </div>
+                        </motion.div>
 
-                        <p className="text-zinc-400 text-lg max-w-md leading-relaxed">
-                            Ready to bring your vision to life? Tell us about your project and we'll get back to you within 24 hours.
-                        </p>
+                        <motion.p variants={itemVariants} className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-sm">
+                            Have a concept? We have the craft. Reach out and let’s start the conversation.
+                        </motion.p>
 
-                        <div className="pt-2 w-fit space-y-8">
-                            <div className="space-y-3">
-                                <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Email</p>
-                                <div className="flex flex-col gap-6 md:gap-4">
-                                    <a href="mailto:manager.remapstudio@gmail.com"
-                                        className="group flex items-center gap-4 text-xl text-zinc-400 hover:text-white transition-all">
-                                        <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
-                                            <Mail size={18} className="text-zinc-500 group-hover:text-white" />
-                                        </div>
-                                        <span className="font-medium break-all md:break-normal">
-                                            manager.remapstudio@gmail.com
-                                        </span>
-                                    </a>
-
-                                    <a href="mailto:hello@remapstudio.com"
-                                        className="group flex items-center gap-4 text-xl text-zinc-400 hover:text-white transition-all">
-                                        <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
-                                            <Mail size={18} className="text-zinc-500 group-hover:text-white" />
-                                        </div>
-                                        <span className="font-normal">hello@remapstudio.com</span>
-                                    </a>
-                                </div>
+                        <motion.div variants={itemVariants} className="space-y-8 pt-8 border-t border-zinc-900">
+                            <div className="grid grid-cols-1 gap-8">
+                                <ContactLink 
+                                    label="Project Inquiries" 
+                                    value="hello@remapstudio.com" 
+                                    href="mailto:hello@remapstudio.com" 
+                                    icon={<Mail size={16} />} 
+                                />
+                                <ContactLink 
+                                    label="Direct Line" 
+                                    value="+91 63976 07997" 
+                                    href="tel:+916397607997" 
+                                    icon={<Phone size={16} />} 
+                                />
                             </div>
-                            <div className="space-y-3">
-                                <p className="text-zinc-500 text-xs uppercase tracking-widest font-semibold">Phone</p>
-                                <a href="tel:+916397607997"
-                                    className="group flex items-center gap-4 text-xl text-zinc-300 hover:text-white transition-all">
-                                    <div className="p-2 bg-zinc-900/50 rounded-lg border border-zinc-800 group-hover:border-zinc-500 transition-colors">
-                                        <Phone size={18} className="text-zinc-500 group-hover:text-white" />
-                                    </div>
-                                    <span className="font-medium">+91 63976 07997</span>
-                                </a>
-                            </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
-                    {/* Right Column: The Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
+                    {/* Right Column - 7 Cols */}
+                    <motion.div 
+                        className="lg:col-span-7 bg-zinc-900/20 border border-zinc-800/50 p-8 md:p-12 rounded-[2rem] backdrop-blur-sm"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "circOut" }}
                     >
-                        <form onSubmit={handleSubmit} className="space-y-10">
-                            <div className="space-y-2">
-                                <label className={labelClasses}>Name</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Your Name"
-                                    required
-                                    className={inputClasses}
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <FloatingInput 
+                                    label="Name" 
+                                    placeholder="Enter Your Name" 
                                     value={formData.fullName}
-                                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                    onChange={(v) => setFormData({...formData, fullName: v})}
                                 />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className={labelClasses}>Email</label>
-                                <input
+                                <FloatingInput 
+                                    label="Email" 
                                     type="email"
-                                    placeholder="Enter Your Email"
-                                    required
-                                    className={inputClasses}
+                                    placeholder="Enter Your Email" 
                                     value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                    onChange={(v) => setFormData({...formData, email: v})}
                                 />
                             </div>
 
-                            <div className="space-y-2 relative">
-                                <label className={labelClasses}>Service Interested In</label>
-                                <div className="relative">
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Service Interested In</label>
+                                <div className="relative border-b border-zinc-800 group-focus-within:border-white transition-colors duration-500">
                                     <select
                                         required
-                                        className={`${inputClasses} appearance-none cursor-pointer`}
+                                        className="w-full bg-transparent py-4 outline-none appearance-none cursor-pointer text-lg font-light"
                                         value={formData.service}
                                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                                     >
-                                        <option value="" disabled className="bg-black">Select a service</option>
-                                        <option value="photography" className="bg-black">Photography & Videography</option>
-                                        <option value="ai-ads" className="bg-black">AI-Powered Ads</option>
-                                        <option value="branding" className="bg-black">Commercial Branding</option>
-                                        <option value="design" className="bg-black">Graphic Design</option>
+                                        <option value="" disabled className="bg-black">Select Experience</option>
+                                        <option value="photography" className="bg-black text-white">Production & Visuals</option>
+                                        <option value="ai-ads" className="bg-black text-white">AI-Powered Ads</option>
+                                        <option value="branding" className="bg-black text-white">Brand Architecture</option>
+                                        <option value="design" className="bg-black text-white">Creative Design</option>
                                     </select>
-                                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" size={18} />
+                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">
+                                        <ArrowUpRight size={20} />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className={labelClasses}>Message</label>
+                            <div className="space-y-2 group">
+                                <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Message</label>
                                 <textarea
-                                    rows={1}
-                                    placeholder="Tell us about your project..."
-                                    className={`${inputClasses} resize-none`}
+                                    rows={3}
+                                    placeholder="Briefly describe your objective..."
+                                    className="w-full bg-transparent border-b border-zinc-800 py-4 outline-none group-focus-within:border-white transition-colors duration-500 resize-none text-lg font-light"
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 />
@@ -173,10 +164,12 @@ export const Contactus = () => {
 
                             <button
                                 type="submit"
-                                className="group flex items-center justify-center gap-3 bg-white cursor-pointer rounded-2xl text-black w-full sm:w-auto px-8 py-5 font-bold transition-all mt-8"
+                                className="group relative w-full md:w-auto flex items-center justify-between gap-12 bg-white text-black pl-8 pr-3 py-3 rounded-full overflow-hidden hover:bg-zinc-200 transition-all active:scale-[0.98]"
                             >
-                                Send Message
-                                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                <span className="font-bold uppercase text-xs tracking-widest">Send Inquiry</span>
+                                <div className="bg-black text-white p-3 rounded-full group-hover:rotate-45 transition-transform duration-500">
+                                    <ArrowRight size={20} />
+                                </div>
                             </button>
                         </form>
                     </motion.div>
@@ -185,3 +178,31 @@ export const Contactus = () => {
         </div>
     );
 };
+
+/* Helper Components to keep the main code clean */
+
+const ContactLink = ({ label, value, href, icon }: { label: string, value: string, href: string, icon: React.ReactNode }) => (
+    <a href={href} className="group flex flex-col gap-1 transition-all">
+        <span className="text-[10px] uppercase tracking-widest text-zinc-600 font-bold">{label}</span>
+        <div className="flex items-center gap-3">
+            <span className="text-xl font-light text-zinc-300 group-hover:text-white transition-colors">{value}</span>
+            <div className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-white">
+                <ArrowUpRight size={18} />
+            </div>
+        </div>
+    </a>
+);
+
+const FloatingInput = ({ label, placeholder, value, onChange, type = "text" }: { label: string, placeholder: string, value: string, onChange: (v: string) => void, type?: string }) => (
+    <div className="space-y-2 group">
+        <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">{label}</label>
+        <input
+            type={type}
+            placeholder={placeholder}
+            required
+            className="w-full bg-transparent border-b border-zinc-800 py-4 outline-none group-focus-within:border-white transition-colors duration-500 text-lg font-light placeholder:text-zinc-800"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+        />
+    </div>
+);

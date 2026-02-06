@@ -134,12 +134,12 @@ export const Landing: React.FC = () => {
       <div className="border-y border-zinc-900 mt-8 bg-black"></div>
 
       <section id="services" className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-15 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Core Services</h2>
             <p className="text-zinc-500 font-light">From traditional lenses to artificial intelligence, we use the best tool for the objective.</p>
           </div>
-          <div className="text-zinc-700 font-mono text-sm uppercase">/ Services_06</div>
+          {/* <div className="text-zinc-700 font-mono text-sm uppercase">/ Services_06</div> */}
         </div>
 
         <motion.div

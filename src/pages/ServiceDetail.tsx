@@ -1,23 +1,29 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Camera, CheckCircle2, ExternalLink, Play } from 'lucide-react';
-import CorporateImg from '../assets/CorporateImg.avif';
-import ProductImg from '../assets/ProductImg.avif';
-import EventImg from '../assets/EventImg.avif';
-import RealEstateImg from '../assets/RealEstateImg.avif';
-import InterviewsImg from '../assets/InterviewsImg.avif';
-import imgurl from '../assets/imgurl.avif';
+import { ArrowLeft, Camera, ExternalLink, Play } from 'lucide-react';
 import { useState } from 'react';
+import { Contactus } from './Contactus';
+
+// import CorporateImg from '../assets/CorporateImg.avif';
+import Burger from '../assets/Burger.jpg';
+import divine from '../assets/divine.jpg';
+import flyerwork from '../assets/flyerwork.jpg';
+import krsna from '../assets/krsna.jpg';
+import organicmilk from '../assets/organicmilk.jpg';
+// import ProductImg from '../assets/ProductImg.avif';
+// import EventImg from '../assets/EventImg.avif';
+// import RealEstateImg from '../assets/RealEstateImg.avif';
+// import InterviewsImg from '../assets/InterviewsImg.avif';
+import imgurl from '../assets/imgurl.avif';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } // Using a cubic-bezier for smoother feel
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }
 };
 
 export const ServiceDetail = () => {
-  const navigate = useNavigate()
   const { id } = useParams();
   const [hoveredWork, setHoveredWork] = useState<number | null>(null);
   const services = [
@@ -33,36 +39,12 @@ export const ServiceDetail = () => {
         "Full commercial usage rights"
       ],
       Specializations: [
-        {
-          title: "Corporate Photoshoots",
-          image: CorporateImg,
-          desc: "Executive portraits and environmental office photography captured with high-end lighting setups.",
-        },
-        {
-          title: "Product Photography",
-          image: ProductImg,
-          desc: "Precision e-commerce and catalog photography focusing on material texture and color accuracy.",
-        },
-        {
-          title: "Event Documentation",
-          image: EventImg,
-          desc: "Comprehensive photo and video coverage for high-stakes corporate seminars and product launches.",
-        },
-        {
-          title: "Real Estate & Interiors",
-          image: RealEstateImg,
-          desc: "Architectural photography using specialized lenses to document commercial and residential spaces.",
-        },
-        {
-          title: "Interviews & Testimonials",
-          image: InterviewsImg,
-          desc: "Direct-to-camera video production featuring professional sound engineering and multicam setups.",
-        },
-        {
-          title: "Business Campaign Shoots",
-          image: imgurl,
-          desc: "Concept-driven visual production for multi-channel digital ads and brand promotions.",
-        }
+        { title: "Corporate Photoshoots", image: Burger, desc: "Executive portraits and environmental office photography captured with high-end lighting setups."},
+        { title: "Product Photography", image: flyerwork, desc: "Precision e-commerce and catalog photography focusing on material texture and color accuracy."},
+        { title: "Event Documentation", image: divine, desc: "Comprehensive photo and video coverage for high-stakes corporate seminars and product launches."},
+        { title: "Real Estate & Interiors", image: krsna, desc: "Architectural photography using specialized lenses to document commercial and residential spaces."},
+        { title: "Interviews & Testimonials", image: organicmilk, desc: "Direct-to-camera video production featuring professional sound engineering and multicam setups."},
+        { title: "Business Campaign Shoots", image: imgurl, desc: "Concept-driven visual production for multi-channel digital ads and brand promotions."}   
       ]
     }, {
       id: "commercial-brand-production",
@@ -76,14 +58,8 @@ export const ServiceDetail = () => {
         "Custom thumbnails and graphics"
       ],
       Specializations: [
-        {
-          title: "Ad Creatives & Promotional Videos",
-          image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800&auto=format&fit=crop",
-          desc: "Dynamic video ads optimized for social media platforms to drive engagement and conversions.",
-        },
-        {
-          title: "Social Media Reels & Short-Form Content",
-          image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=800&auto=format&fit=crop",
+        { title: "Ad Creatives & Promotional Videos", image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800&auto=format&fit=crop", desc: "Dynamic video ads optimized for social media platforms to drive engagement and conversions."},
+        { title: "Social Media Reels & Short-Form Content", image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=800&auto=format&fit=crop",
           desc: "Bite-sized video content tailored for platforms like Instagram, TikTok, and LinkedIn to boost brand visibility.",
         },
         {
@@ -120,6 +96,7 @@ export const ServiceDetail = () => {
       ]
     }, {
       id: "drone-photography-videography",
+      title: "Drone Photography & Videography",
       subtitle: "Stunning aerial views for real estate, factories, and big construction projects.",
       image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop",
       deliverables: [
@@ -224,159 +201,119 @@ export const ServiceDetail = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden selection:bg-white selection:text-black">
+      
+      {/* NAVIGATION - Improved for Mobile */}
+      <nav className="fixed top-0 left-0 w-full z-50 p-4 md:p-10 pointer-events-none">
+        <Link to="/" className="pointer-events-auto inline-flex items-center bg-black/20 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 text-sm font-medium text-white hover:bg-white hover:text-black transition-all group shadow-2xl">
+          <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" size={16} />
+          <span className="hidden sm:inline">Back Home</span>
+          <span className="sm:hidden text-xs">Home</span>
+        </Link>
+      </nav>
 
-      {/* SECTION 1: POLISHED HERO */}
-      <section className="relative min-h-[80vh] flex items-center px-4 md:px-6">
-        <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* SECTION 1: FLUID HERO */}
+      <section className="relative pt-30 md:min-h-screen flex items-center px-6 md:px-12">
+        <div className="absolute inset-0 z-0">
           <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.4 }}
+            animate={{ scale: 1, opacity: 0.5 }}
             transition={{ duration: 1.5 }}
             src={service.image}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent" />
         </div>
-
-        <Link to="/" className="fixed top-6 left-4 md:top-8 md:left-10 z-50 inline-flex items-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-5 py-2 text-sm font-medium text-white hover:bg-white hover:text-black transition-all group shadow-2xl">
-          <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" size={18} />
-          Back Home
-        </Link>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
           <motion.div {...fadeInUp}>
-            <span className="inline-block px-4 py-1 rounded-full border border-white/20 text-xs uppercase tracking-widest mb-6 bg-white/5 backdrop-blur-sm">Premium Studio Service</span>
-            <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold tracking-tighter mb-8 leading-[0.85]">
-              {(service.title || '').split(' ').map((word, i) => (
-                <span key={i} className={i % 2 !== 0 ? "text  -zinc-500" : ""}>{word} </span>
+            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-6 leading-[0.9]">
+              {service.title.split(' ').map((word, i) => (
+                <span key={i} className={i % 2 !== 0 ? "text-zinc-500" : "text-white"}>{word} </span>
               ))}
             </h1>
-            <p className="max-w-xl text-lg md:text-2xl text-zinc-400 font-light leading-relaxed mb-10">
+            <p className="max-w-2xl text-base sm:text-lg md:text-2xl text-zinc-400 font-light leading-relaxed">
               {service.subtitle}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: SUB-SERVICES (Interactive Chips) */}
-      <section className="pb-20 px-6 max-w-7xl mx-auto">
+      {/* SECTION 2: SPECIALIZATIONS - Fixed Grid for Mobile */}
+      <section className="py-10 px-6 max-w-7xl mx-auto">
         <motion.div {...fadeInUp} className="mb-12">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-4">Specializations</h2>
-          <div className="h-px w-20 bg-white" />
+          <h2 className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-4 font-bold">Specializations</h2>
+          <div className="h-px w-12 bg-white/30" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {service.Specializations?.map((item, i) => (
             <motion.div
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.05 }}
               viewport={{ once: true }}
-              key={i}
-              className="group relative overflow-hidden bg-zinc-950 border border-zinc-900 rounded-3xl p-6 hover:border-white/30 transition-all cursor-default"
+              className="group relative bg-zinc-900/40 border border-zinc-800/50 rounded-2xl md:rounded-3xl p-6 md:p-8 hover:bg-zinc-900 transition-all"
             >
-              <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-zinc-900 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors">
+              <div className="flex justify-between items-center mb-6">
+                <div className="p-3 bg-zinc-800 rounded-xl group-hover:bg-white group-hover:text-black transition-colors duration-500">
                   <Camera size={20} />
                 </div>
-                <ArrowLeft className="rotate-135 opacity-0 group-hover:opacity-100 transition-opacity text-zinc-500" size={20} />
+                <div className="h-px grow mx-4 bg-zinc-800 group-hover:bg-zinc-700 transition-colors" />
               </div>
-              <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-              <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
+              <h4 className="text-lg md:text-xl font-semibold mb-3">{item.title}</h4>
+              <p className="text-zinc-500 text-sm leading-relaxed font-light">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* SECTION 3: THE WORK GALLERY (Bento Grid) */}
-      <section className="py-20 px-6 max-w-7xl mx-auto bg-zinc-950/30 rounded-[3rem] border border-zinc-900/50">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <motion.div
-            initial={fadeInUp.initial}
-            whileInView={fadeInUp.whileInView}
-            viewport={fadeInUp.viewport}
-            transition={fadeInUp.transition}
-            className="..."
-          >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Our Portfolio</h2>
-            <p className="text-zinc-500 mt-4">A curated selection of {service.title} projects.</p>
-          </motion.div>
-          <div className="flex gap-4">
-            <span className="text-xs uppercase tracking-widest text-zinc-600 border border-zinc-800 px-4 py-2 rounded-full">4K Cinematic</span>
-            <span className="text-xs uppercase tracking-widest text-zinc-600 border border-zinc-800 px-4 py-2 rounded-full">Color Graded</span>
+      {/* SECTION 3: PORTFOLIO - Responsive Bento Grid */}
+      <section className="py-16 px-4 md:px-8 mx-0 md:mx-6 bg-zinc-950/50 rounded-none md:rounded-[3.5rem] border-y md:border border-zinc-900/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col mb-12 gap-4">
+             <h2 className="text-4xl md:text-7xl font-bold tracking-tight">Our Portfolio</h2>
           </div>
-        </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {service.Specializations?.map((item, i) => (
-            <motion.div
-              key={i}
-              onMouseEnter={() => setHoveredWork(i)}
-              onMouseLeave={() => setHoveredWork(null)}
-              className={`${hoveredWork === i ? 'ring-2 ring-white/20' : ''} relative break-inside-avoid rounded-3xl overflow-hidden group cursor-pointer bg-zinc-900`}
-              {...fadeInUp}
-            >
-              <img
-                src={item.image}
-                alt=""
-                className="w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-              />
-
-              <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-white font-medium text-lg">{item.title}</p>
-                <div className="flex items-center gap-2 text-zinc-400 text-xs mt-2 uppercase tracking-tighter">
-                  <Play size={12} fill="currentColor" /> Preview Work
-                </div>
-              </div>
-
-              {/* Icon Overlay */}
-              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20">
-                  <ExternalLink size={18} className="text-white" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 4: THE CONNECTION (Consultative CTA) */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="relative overflow-hidden bg-white rounded-[3rem] p-8 md:p-20 text-black group">
-          {/* Animated Background Element */}
-          <div className="absolute -right-20 -top-20 w-64 h-64 bg-zinc-200 rounded-full blur-3xl group-hover:bg-zinc-300 transition-colors duration-700" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] mb-8">
-                Ready to elevate your <span className="text-zinc-400">visual story?</span>
-              </h3>
-              <div className="space-y-4">
-                {service.deliverables.slice(0, 3).map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-zinc-600">
-                    <CheckCircle2 size={18} className="text-black" />
-                    <span className="text-lg font-medium tracking-tight">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center lg:items-end">
-              <p className="text-zinc-500 mb-8 text-lg text-center lg:text-right max-w-sm">
-                We're currently booking projects for next month. Let's discuss your timeline.
-              </p>
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full md:w-auto bg-black text-white px-12 py-6 rounded-2xl font-bold hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-xl active:scale-95"
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
+            {service.Specializations?.map((item, i) => (
+              <motion.div
+                key={i}
+                onMouseEnter={() => setHoveredWork(i)}
+                onMouseLeave={() => setHoveredWork(null)}
+                className={`relative break-inside-avoid rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer bg-zinc-900 border border-zinc-800/50 transition-all ${hoveredWork === i ? 'scale-[0.98]' : ''}`}
+                {...fadeInUp}
               >
-                Start a Project
-                <ExternalLink size={20} />
-              </button>
-            </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                />
+
+                {/* Mobile Info Overlay (Visible on mobile, Hover on Desktop) */}
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="absolute bottom-0 left-0 p-5 md:p-8 w-full md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-white font-medium text-base md:text-lg">{item.title}</p>
+                  <div className="flex items-center gap-2 text-zinc-400 text-[10px] mt-2 uppercase tracking-widest">
+                    <Play size={10} fill="currentColor" /> View Project
+                  </div>
+                </div>
+
+                <div className="absolute top-4 right-4 md:top-6 md:right-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                  <div className="bg-black/40 backdrop-blur-md p-2 md:p-3 rounded-full border border-white/10">
+                    <ExternalLink size={16} className="text-white" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </section>
+
+      {/* SECTION 4: CONTACT */}
+      <section id="contact" className="mt-10 border-t border-zinc-900">
+        <Contactus />
       </section>
     </div>
   );
