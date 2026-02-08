@@ -79,8 +79,8 @@ export const Contactus = () => {
                     >
                         <motion.div variants={itemVariants} className="space-y-4">
                             <h1 className="text-6xl md:text-8xl font-medium tracking-tighter leading-[0.85]">
-                                Let's build <br />
-                                <span className="italic font-light">the future.</span>
+                                Let's craft <br />
+                                <span className="italic font-light">Visuals together.</span>
                             </h1>
                         </motion.div>
 

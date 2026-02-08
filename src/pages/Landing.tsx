@@ -1,11 +1,13 @@
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
-import { Camera, Video, Scissors, Plane, Cpu, PenTool, ArrowRight, LucideIcon, Instagram, Linkedin } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
+import { Camera, Video, Scissors, Plane, Cpu, PenTool, LucideIcon, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Navbar } from '../component/Navbar';
 import { ServiceCard } from '../component/ServiceCard';
 import { Contactus } from './Contactus';
 import { AboutPage } from './Aboutpage';
 import { ConstellationBackground } from '../component/ConstellationBackground';
+import mp4 from '../assets/video/mp4.mp4';
+import remapstudio from '../assets/LOGO/remapStudio.png';
 
 interface ServiceItem {
   id: string;
@@ -76,70 +78,72 @@ export const Landing: React.FC = () => {
       image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop"
     },
   ];
+  const [index, setIndex] = useState(0);
+  const words = ["STORY", "VISION", "BRAND", "IDEAS"];
 
+  // Cycle through words every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="bg-black text-white selection:bg-white selection:text-black font-sans antialiased">
       <Navbar />
-      <section className="relative min-h-[80vh] md:min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 overflow-hidden bg-black pt-25 md:pt-24">
+      <section className="relative min-h-screen bg-[#050505] flex flex-col md:flex-row items-center justify-between overflow-hidden px-6 md:px-20 pt-20 pb-6">
         <div className="absolute inset-0 z-0">
           <ConstellationBackground />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,black_90%)] z-1 pointer-events-none" />
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="relative z-10 max-w-5xl px-4 md:px-0 mt-20 md:mt-24"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-6 md:mb-8 leading-[1.1]"
-          >
-            High-Impact Visuals <br className="hidden md:block" />
-            <span className="text-zinc-500 italic font-medium block md:inline mt-2 md:mt-0">
-              For The Modern Brand
-            </span>
-          </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light leading-relaxed px-4 md:px-0"
-          >
-            We deliver cinematic production and AI-powered creative solutions designed to scale your brand’s digital footprint.
-          </motion.p>
+        {/* LEFT SIDE: KINETIC TYPOGRAPHY */}
+        <div className="relative z-20 w-full md:w-1/2 pt-10">
+          <div className="space-y-0">
+            <h2 className="font-helvetica text-white text-6xl md:text-[110px] font-black tracking-[-0.06em] uppercase leading-[0.8]">
+              BRINGING <br />
+              YOUR <br />
+              <span className="text-cyan-400">STORY</span> <br />
+              TO THE WORLD
+            </h2>
+          </div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center items-center"
-          >
-            <button
-              onClick={() => window.location.hash = '#contact'}
-              className="w-full sm:w-auto bg-white cursor-pointer text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform"
-            >
-              Book a Consultation
-              <ArrowRight size={18} className="md:w-5 md:h-5" />
-            </button>
+          <div className="mt-12 space-y-8">
+            <p className="text-zinc-400 text-lg md:text-xl font-medium max-w-sm leading-tight">
+              We deliver Cinematic production and <br />
+              AI-powered <span className="text-white">creative to scale your brand.</span>
+            </p>
+          </div>
+        </div>
 
-            <button className="w-full sm:w-auto border border-zinc-800 text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold hover:bg-white/5 transition-all">
-              <a href="#services" className="uppercase tracking-widest text-xs">
-                Our Capabilities
-              </a>
-            </button>
-          </motion.div>
-        </motion.div>
+        {/* RIGHT SIDE: LANDSCAPE VIDEO BOX */}
+        <div className="relative w-full md:w-[45%] h-[40vh] md:h-[60vh] mt-12 md:mt-0">
+          <div className="relative w-full h-full overflow-hidden rounded-[2rem] md:rounded-[2rem] border border-white/10 shadow-2xl">
+            <iframe
+              className="absolute top-1/2 left-1/2 w-[180%] h-[120%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              src={`https://www.youtube.com/embed/snNhbkF6nSw?autoplay=1&mute=1&loop=1&playlist=snNhbkF6nSw&controls=0&modestbranding=1&rel=0`}
+              allow="autoplay; encrypted-media"
+            />
+            {/* Gradient Overlay for color depth */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent z-10" />
+          </div>
+
+          {/* Background Glow to make it colorful and attractive */}
+          <div className="absolute -inset-4 bg-white/5 blur-3xl rounded-full z-[-1]" />
+        </div>
+
+        {/* Decorative Grid background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       </section>
 
-      <div className="border-y border-zinc-900 mt-8 bg-black"></div>
+      <div className="border-y border-zinc-900 bg-black"></div>
 
-      <section id="services" className="py-20 px-6 max-w-7xl mx-auto">
+      <section id="services" className="py-16 px-6 max-w-7xl mx-auto">
         <div className="mb-15 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Core Services</h2>
             <p className="text-zinc-500 font-light">From traditional lenses to artificial intelligence, we use the best tool for the objective.</p>
           </div>
-          {/* <div className="text-zinc-700 font-mono text-sm uppercase">/ Services_06</div> */}
         </div>
 
         <motion.div
@@ -171,9 +175,11 @@ export const Landing: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
           <div className="group">
-            <div className="font-black text-2xl tracking-tighter mb-4 group-hover:tracking-normal transition-all duration-500 ease-in-out">
-              REMAP STUDIO
-            </div>
+            <img
+              src={remapstudio}
+              alt="Remap Studio Logo"
+              className="h-8 md:h-10 w-auto mb-5 object-contain"
+            />
             <p className="text-[12px] md:text-sm text-zinc-400 max-w-xs font-light leading-relaxed">
               Premium visual production for startups, corporate brands, and marketing teams worldwide.
             </p>
