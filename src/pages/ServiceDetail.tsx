@@ -216,8 +216,8 @@ export const ServiceDetail = () => {
                 aspectClass = "aspect-video"; 
                 spanClass = "md:col-span-1 lg:col-span-1"; 
               } else if (item.type === 'reel') {
-                aspectClass = "aspect-[9/16]"; // Portrait
-                spanClass = "col-span-1 row-span-1"; // Reels take vertical space
+                aspectClass = "aspect-[9/16]"; 
+                spanClass = "col-span-1 row-span-1"; 
               }
 
               return (
