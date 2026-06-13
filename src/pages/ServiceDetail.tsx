@@ -319,7 +319,7 @@ export const ServiceDetail = () => {
             {/* Left Navigation Button */}
             <button
               onClick={prevImage}
-              className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white z-110 transition-all"
+              className="absolute cursor-pointer left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white z-110 transition-all"
             >
               <ChevronLeft size={32} />
             </button>
@@ -357,7 +357,7 @@ export const ServiceDetail = () => {
             {/* Right Navigation Button */}
             <button
               onClick={nextImage}
-              className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white z-110 transition-all"
+              className="absolute cursor-pointer right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white z-110 transition-all"
             >
               <ChevronRight size={32} />
             </button>
