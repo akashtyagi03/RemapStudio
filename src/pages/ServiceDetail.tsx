@@ -390,7 +390,7 @@ export const ServiceDetail = () => {
               rel="noopener noreferrer"
               className="text-[10px] uppercase tracking-widest text-zinc-400 hover:text-cyan-400 transition-colors font-bold"
             >
-              Aakash Tyagi ❤️
+              Aakash Tyagi 🔥
             </a>
           </div>
 
